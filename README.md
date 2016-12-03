@@ -1,4 +1,4 @@
-Firmware for Freifunk Bodensee
+LEDE-Firmware for Freifunk Bodensee
 =========================
 
 The firmware turns a common wireless router into a mesh networking device.
@@ -11,26 +11,21 @@ Please talk to us on IRC if anything does not work!
 To build the firmware you need a Unix console to enter commands into.
 Install dependencies for the build environment (Debian/Ubuntu):
 
-    sudo apt-get install subversion g++ zlib1g-dev build-essential git python
-    sudo apt-get install libncurses5-dev gawk gettext unzip file libssl-dev wget
-
+    sudo apt-get install subversion gcc g++ libncurses5-dev openssl libssl-dev git python binutils bzip2 flex perl make gawk unzip
+    
 Build commands for the console:
 
-    git clone git://git.openwrt.org/15.05/openwrt.git
-    cd openwrt
-    
-    ./scripts/feeds update -a
-    ./scripts/feeds install -a
+    git clone https://git.lede-project.org/source.git
+    cd source
     
     git clone https://github.com/ffbsee/firmware.git
     cp -rf firmware/files firmware/package .
     chmod -R a+rX firmware/files/www
-    git am --whitespace=nowarn firmware/patches/openwrt/*.patch
-    cd feeds/routing && git am --whitespace=nowarn ../../firmware/patches/routing/*.patch && cd -
-    cd feeds/packages && git am --whitespace=nowarn ../../firmware/patches/packages/*.patch && cd -
     rm -rf firmware tmp
     
-    make defconfig
+    ./scripts/feeds update -a
+    ./scripts/feeds install -a
+
     make menuconfig
 
 Now select the right "Target System" and "Target Profile" for your AP model:
