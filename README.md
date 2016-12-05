@@ -11,7 +11,7 @@ Please talk to us on IRC if anything does not work!
 To build the firmware you need a Unix console to enter commands into.
 Install dependencies for the build environment (Debian/Ubuntu):
 
-    sudo apt-get install subversion gcc g++ libncurses5-dev openssl libssl-dev git python python-dev
+    sudo apt-get install subversion gcc g++ libncurses5-dev openssl libssl-dev git python
     binutils bzip2 flex perl make gawk unzip
     
 Build commands for the console:
